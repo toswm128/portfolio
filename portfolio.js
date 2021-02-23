@@ -48,6 +48,8 @@ mouseMove = (e) =>{
         Left = false
         console.log(ing)
         ing = false
+        body.classList.remove("right")
+        body.classList.remove("left")
     }
 }
 
@@ -55,10 +57,13 @@ eventManager = () =>{
     if(Right&&!ing){
         ing = true;
         setTimeout(right,500)
+        body.classList.remove("left")
+        body.classList.add("right");
     }if(Left&&!ing){
         ing = true;
-        console.log("ing")
         setTimeout(left,500)
+        body.classList.remove("right")
+        body.classList.add("left");
     }
 }
 

@@ -4,7 +4,7 @@ body{
     display: flex;
     align-items: flex-end;
     overflow-x:hidden;
-    transition: 0.5s ease-in-out;
+    
 }
 
 .right{
@@ -28,7 +28,7 @@ body{
     z-index: 1;
     width: 100%;
     height: 100%;
-    
+    transition: 0.5s ease-in-out;
 }
 
 .flex{
@@ -52,6 +52,7 @@ body{
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  
 }
 
 img{
