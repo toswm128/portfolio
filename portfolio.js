@@ -3,33 +3,33 @@ const flex = document.querySelector(".flex");
 const id1 = document.querySelector(".id1");
 const id5 = document.querySelector(".id5");
 const id = []
-const idNum = 6;
+const idNum = 9;
 let fristId = 1;
 const HIDNE = "hiden"
 const WIDTH = "width"
 let Left = false;
 let Right = false;
+let ing = false;
 
 right = () =>{
     if(Right){
-        Right = false
         const first = id[fristId];
-        const last = id[fristId+4];
+        const last = id[fristId+5];
         first.classList.add(WIDTH);
         last.classList.remove(WIDTH);
-        if(idNum>fristId+4)
+        ing=false
+        if(idNum>fristId+5)
         fristId++
     }
 }
 
 left = () =>{
     if(Left){
-        Left = false;
         const first = id[fristId];
-        const last = id[fristId+4];
-        console.log(first,last);
+        const last = id[fristId+5];
         last.classList.add(WIDTH);
         first.classList.remove(WIDTH);
+        ing=false
         if(1<fristId)
         fristId--
     }
@@ -38,12 +38,27 @@ left = () =>{
 mouseMove = (e) =>{
     const mouseX = e.offsetX;
     if(mouseX>=1200){
+        Left = false;
         Right = true
-        setTimeout(right,1000)
-        
     }else if(mouseX<=400){
+        Right = false
         Left = true;
-        setTimeout(left,1000)
+    }else{
+        Right = false
+        Left = false
+        console.log(ing)
+        ing = false
+    }
+}
+
+eventManager = () =>{
+    if(Right&&!ing){
+        ing = true;
+        setTimeout(right,500)
+    }if(Left&&!ing){
+        ing = true;
+        console.log("ing")
+        setTimeout(left,500)
     }
 }
 
@@ -52,6 +67,7 @@ init = () => {
         id[i] = document.querySelector(`.id${i}`)
         console.log(id[i]);
     }
+    setInterval(eventManager,1)
     body.addEventListener("mousemove",mouseMove)
 }
 
