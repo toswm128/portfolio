@@ -11,29 +11,60 @@ let Left = false;
 let Right = false;
 let ing = false;
 
+excessRight = () =>{
+    const first = id[fristId];
+    first.classList.add(WIDTH);
+    ing=false
+    console.log(fristId)
+}
+
 right = () =>{
     if(Right){
-        const first = id[fristId];
-        const last = id[fristId+5];
-        first.classList.add(WIDTH);
-        last.classList.remove(WIDTH);
-        ing=false
-        if(idNum>fristId+5)
-        fristId++
+        if(idNum>fristId+5){
+            const first = id[fristId];
+            const last = id[fristId+5];
+            first.classList.add(WIDTH);
+            last.classList.remove(WIDTH);
+            ing=false
+            fristId++
+            center++
+        } else if(idNum>fristId+1){
+            excessRight()
+            fristId++
+        }
     }
 }
 
 left = () =>{
     if(Left){
-        const first = id[fristId];
-        const last = id[fristId+5];
-        last.classList.add(WIDTH);
-        first.classList.remove(WIDTH);
-        ing=false
-        if(1<fristId)
-        fristId--
+        if(idNum-4<=fristId){
+            fristId--
+            excessLeft();
+        }else if(0<fristId){
+            if(1<fristId){
+            fristId--}
+            const first = id[fristId];
+            const last = id[fristId+5];
+            last.classList.add(WIDTH);
+            first.classList.remove(WIDTH);
+            ing=false
+            console.log(fristId)
+        }
     }
 }
+
+excessLeft = () =>{
+    const first = id[fristId];
+    first.classList.remove(WIDTH);
+    ing=false
+    console.log("a")
+}
+
+//minusLeft= () =>{
+//    const last = id[fristId+5];
+//    last.classList.add(WIDTH);
+//    ing=false
+//}
 
 mouseMove = (e) =>{
     const mouseX = e.offsetX;
@@ -56,15 +87,20 @@ mouseMove = (e) =>{
 eventManager = () =>{
     if(Right&&!ing){
         ing = true;
-        setTimeout(right,500)
+        setTimeout(right,300)
         body.classList.remove("left")
         body.classList.add("right");
     }if(Left&&!ing){
         ing = true;
-        setTimeout(left,500)
+        setTimeout(left,300)
         body.classList.remove("right")
         body.classList.add("left");
     }
+}
+
+Select = () =>{
+    const  selctCard = id[fristId];
+    selctCard.classList.add("select")
 }
 
 init = () => {
@@ -72,6 +108,7 @@ init = () => {
         id[i] = document.querySelector(`.id${i}`)
         console.log(id[i]);
     }
+    Select()
     setInterval(eventManager,1)
     body.addEventListener("mousemove",mouseMove)
 }
