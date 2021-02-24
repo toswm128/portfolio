@@ -15,7 +15,6 @@ excessRight = () =>{
     const first = id[fristId];
     first.classList.add(WIDTH);
     ing=false
-    console.log(fristId)
 }
 
 right = () =>{
@@ -26,10 +25,11 @@ right = () =>{
             first.classList.add(WIDTH);
             last.classList.remove(WIDTH);
             ing=false
+            selectRight()
             fristId++
-            center++
         } else if(idNum>fristId+1){
             excessRight()
+            selectRight()
             fristId++
         }
     }
@@ -38,9 +38,11 @@ right = () =>{
 left = () =>{
     if(Left){
         if(idNum-4<=fristId){
+            selectLeft()
             fristId--
             excessLeft();
         }else if(0<fristId){
+            selectLeft()
             if(1<fristId){
             fristId--}
             const first = id[fristId];
@@ -98,9 +100,25 @@ eventManager = () =>{
     }
 }
 
-Select = () =>{
-    const  selctCard = id[fristId];
-    selctCard.classList.add("select")
+selectRight = () =>{
+    if(Right){
+        const  selctCard = id[fristId+1];
+        const cancelCard = id[fristId];
+        selctCard.classList.add("select")
+        cancelCard.classList.remove("select")
+        console.log(Right,Left)
+    }
+}
+
+selectLeft = () =>{
+    if (Left){
+        const  selctCard = id[fristId-1];
+        const cancelCard = id[fristId];
+        selctCard.classList.add("select")
+        cancelCard.classList.remove("select")
+        console.log(Right,Left)
+    }
+
 }
 
 init = () => {
@@ -108,7 +126,6 @@ init = () => {
         id[i] = document.querySelector(`.id${i}`)
         console.log(id[i]);
     }
-    Select()
     setInterval(eventManager,1)
     body.addEventListener("mousemove",mouseMove)
 }
