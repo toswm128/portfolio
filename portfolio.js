@@ -19,7 +19,7 @@ excessRight = () =>{
 
 right = () =>{
     if(Right){
-        if(idNum>fristId+5){
+        if(idNum>fristId+4){
             const first = id[fristId];
             const last = id[fristId+5];
             first.classList.add(WIDTH);
@@ -27,7 +27,7 @@ right = () =>{
             ing=false
             selectRight()
             fristId++
-        } else if(idNum>fristId+1){
+        } else if(idNum>fristId){
             excessRight()
             selectRight()
             fristId++
@@ -37,7 +37,7 @@ right = () =>{
 
 left = () =>{
     if(Left){
-        if(idNum-4<=fristId){
+        if(idNum-3<=fristId){
             selectLeft()
             fristId--
             excessLeft();
@@ -127,7 +127,8 @@ init = () => {
         console.log(id[i]);
     }
     setInterval(eventManager,1)
-    body.addEventListener("mousemove",mouseMove)
+    body.addEventListener("pointermove",mouseMove)
+    
 }
 
 init()
