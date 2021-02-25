@@ -41,7 +41,7 @@ left = () =>{
             selectLeft()
             fristId--
             excessLeft();
-        }else if(0<fristId){
+        }else if(1<fristId){
             selectLeft()
             if(1<fristId){
             fristId--}
@@ -89,12 +89,12 @@ mouseMove = (e) =>{
 eventManager = () =>{
     if(Right&&!ing){
         ing = true;
-        setTimeout(right,300)
+        setTimeout(right,400)
         body.classList.remove("left")
         body.classList.add("right");
     }if(Left&&!ing){
         ing = true;
-        setTimeout(left,300)
+        setTimeout(left,400)
         body.classList.remove("right")
         body.classList.add("left");
     }
@@ -121,6 +121,16 @@ selectLeft = () =>{
 
 }
 
+click=()=>{
+    id[fristId].classList.add("pick")
+    flex.classList.add("pick")
+    setTimeout(()=>{flex.classList.add("margin")},600)
+    for(let i=1;i<=4;i++){
+        id[fristId+i].classList.add("width")
+
+    }
+}
+
 init = () => {
     for(let i=0;i<=idNum;i++){
         id[i] = document.querySelector(`.id${i}`)
@@ -128,7 +138,7 @@ init = () => {
     }
     setInterval(eventManager,1)
     body.addEventListener("pointermove",mouseMove)
-    
+    body.addEventListener("mouseup",click)
 }
 
 init()
