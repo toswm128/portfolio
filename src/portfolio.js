@@ -1,7 +1,13 @@
+
+
 const body = document.querySelector(".body");
 const flex = document.querySelector(".flex");
-const id1 = document.querySelector(".id1");
-const id5 = document.querySelector(".id5");
+// 307 382 511 614 767 877 1023 1228 
+//1395 1535 1705 1919 2046 2302 3070
+//4605 6140
+// 1200 400 0.75
+
+
 const id = []
 const idNum = 9;
 let fristId = 1;
@@ -71,10 +77,10 @@ excessLeft = () =>{
 
 mouseMove = (e) =>{
     const mouseX = e.offsetX;
-    if(mouseX>=1200){
+    if(mouseX>=rightX){
         Left = false;
         Right = true
-    }else if(mouseX<=400){
+    }else if(mouseX<=leftX){
         Right = false
         Left = true;
     }else{
@@ -138,7 +144,7 @@ click=()=>{
 }
 
 init = () => {
-    location.href;
+    
     for(let i=0;i<=idNum;i++){
         id[i] = document.querySelector(`.id${i}`)
         console.log(id[i]);
