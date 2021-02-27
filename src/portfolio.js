@@ -122,6 +122,8 @@ selectLeft = () =>{
 }
 
 click=()=>{
+    Right = false;
+    Left = false;
     id[fristId].classList.add("pick")
     flex.classList.add("pick")
     setTimeout(()=>{flex.classList.add("margin")},600)
@@ -132,6 +134,7 @@ click=()=>{
 }
 
 init = () => {
+    location.href;
     for(let i=0;i<=idNum;i++){
         id[i] = document.querySelector(`.id${i}`)
         console.log(id[i]);
