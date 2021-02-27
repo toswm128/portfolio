@@ -10,6 +10,7 @@ const WIDTH = "width"
 let Left = false;
 let Right = false;
 let ing = false;
+let Click = false
 
 excessRight = () =>{
     const first = id[fristId];
@@ -87,16 +88,18 @@ mouseMove = (e) =>{
 }
 
 eventManager = () =>{
-    if(Right&&!ing){
-        ing = true;
-        setTimeout(right,400)
-        body.classList.remove("left")
-        body.classList.add("right");
-    }if(Left&&!ing){
-        ing = true;
-        setTimeout(left,400)
-        body.classList.remove("right")
-        body.classList.add("left");
+    if(!Click){
+        if(Right&&!ing){
+            ing = true;
+            setTimeout(right,400)
+            body.classList.remove("left")
+            body.classList.add("right");
+        }if(Left&&!ing){
+            ing = true;
+            setTimeout(left,400)
+            body.classList.remove("right")
+            body.classList.add("left");
+        }
     }
 }
 
@@ -122,6 +125,7 @@ selectLeft = () =>{
 }
 
 click=()=>{
+    Click = true;
     Right = false;
     Left = false;
     id[fristId].classList.add("pick")
