@@ -1,4 +1,5 @@
 
+const link = document.location.href
 
 const body = document.querySelector(".body");
 const flex = document.querySelector(".flex");
@@ -57,7 +58,6 @@ left = () =>{
             last.classList.add(WIDTH);
             first.classList.remove(WIDTH);
             ing=false
-            console.log(fristId)
         }
     }
 }
@@ -66,7 +66,6 @@ excessLeft = () =>{
     const first = id[fristId];
     first.classList.remove(WIDTH);
     ing=false
-    console.log("a")
 }
 
 //minusLeft= () =>{
@@ -86,7 +85,6 @@ mouseMove = (e) =>{
     }else{
         Right = false
         Left = false
-        console.log(ing)
         ing = false
         body.classList.remove("right")
         body.classList.remove("left")
@@ -98,6 +96,7 @@ eventManager = () =>{
         if(Right&&!ing){
             ing = true;
             setTimeout(right,400)
+            console.log("aa")
             body.classList.remove("left")
             body.classList.add("right");
         }if(Left&&!ing){
@@ -115,7 +114,6 @@ selectRight = () =>{
         const cancelCard = id[fristId];
         selctCard.classList.add("select")
         cancelCard.classList.remove("select")
-        console.log(Right,Left)
     }
 }
 
@@ -125,7 +123,6 @@ selectLeft = () =>{
         const cancelCard = id[fristId];
         selctCard.classList.add("select")
         cancelCard.classList.remove("select")
-        console.log(Right,Left)
     }
 
 }
@@ -137,6 +134,9 @@ click=()=>{
     id[fristId].classList.add("pick")
     flex.classList.add("pick")
     setTimeout(()=>{flex.classList.add("margin")},600)
+    setTimeout(()=>{
+    history.pushState({}, "page 2", `${link}/${fristId}`);},650)
+    console.log("a");
     for(let i=1;i<=4;i++){
         id[fristId+i].classList.add("width")
 
@@ -147,7 +147,6 @@ init = () => {
     
     for(let i=0;i<=idNum;i++){
         id[i] = document.querySelector(`.id${i}`)
-        console.log(id[i]);
     }
     setInterval(eventManager,1)
     body.addEventListener("pointermove",mouseMove)
