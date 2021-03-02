@@ -8,9 +8,23 @@ const flex = document.querySelector(".flex");
 //4605 6140
 // 1200 400 0.75
 
+const router = [{
+    url: "https://toswm128.github.io/ToDoList-Contest/"
+},{
+    url: "https://toswm128.github.io/NARARA-/"
+},{
+    url: "https://toswm128.github.io/poop-game/"
+},{
+    url: "https://toswm128.github.io/worm-game/"
+},{
+    url: "https://toswm128.github.io/ball-game/"
+},{
+    url: "https://toswm128.github.io/cool_JS_animation/"
+}
+];
 
 const id = []
-const idNum = 9;
+const idNum = 6;
 let fristId = 1;
 const HIDNE = "hiden"
 const WIDTH = "width"
@@ -134,8 +148,7 @@ click=()=>{
     id[fristId].classList.add("pick")
     flex.classList.add("pick")
     setTimeout(()=>{flex.classList.add("margin")},600)
-    setTimeout(()=>{
-    history.pushState({}, "page 2", `${link}/${fristId}`);},650)
+    setTimeout(()=>{location.href = router[fristId-1].url},900)
     console.log("a");
     for(let i=1;i<=4;i++){
         id[fristId+i].classList.add("width")

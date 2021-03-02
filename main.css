@@ -58,6 +58,10 @@ body{
   user-select: none;
   
 }
+.cardBack{
+    height: 100%;
+    background: blueviolet;
+}
 
 img{
     width: 100%;
